@@ -5,7 +5,6 @@ namespace Gfreeau\Bundle\GetJWTBundle\DependencyInjection\Security\Factory;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
@@ -49,7 +48,7 @@ class GetJWTFactory implements SecurityFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getPosition()
+    public function getPosition(): string
     {
         return 'pre_auth';
     }
@@ -57,7 +56,7 @@ class GetJWTFactory implements SecurityFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getKey()
+    public function getKey(): string
     {
         return 'gfreeau_get_jwt';
     }
@@ -65,7 +64,7 @@ class GetJWTFactory implements SecurityFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function addConfiguration(NodeDefinition $node)
+    public function addConfiguration(NodeDefinition $node): void
     {
         $node
             ->children()
@@ -95,12 +94,8 @@ class GetJWTFactory implements SecurityFactoryInterface
             ->end();
     }
 
-    private function createChildDefinition($parent)
+    private function createChildDefinition($parent): ChildDefinition
     {
-        if (class_exists('Symfony\Component\DependencyInjection\ChildDefinition')) {
-            return new ChildDefinition($parent);
-        }
-
-        return new DefinitionDecorator($parent);
+        return new ChildDefinition($parent);
     }
 }

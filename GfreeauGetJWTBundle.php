@@ -9,10 +9,26 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class GfreeauGetJWTBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container): void
     {
         /** @var SecurityExtension $extension */
         $extension = $container->getExtension('security');
-        $extension->addSecurityListenerFactory(new GetJWTFactory());
+
+        // Authenticator factory for Symfony 5.4 and later
+        if (method_exists($extension, 'addAuthenticatorFactory')) {
+            $extension->addAuthenticatorFactory(new GetJWTFactory());
+
+            return;
+        }
+
+        // Security listener factory for Symfony 5.3 and earlier
+        if (method_exists($extension, 'addSecurityListenerFactory')) {
+            $extension->addSecurityListenerFactory(new GetJWTFactory());
+
+            return;
+        }
     }
 }
