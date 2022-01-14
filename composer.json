@@ -2,7 +2,7 @@
     "name": "gfreeau/get-jwt-bundle",
     "type": "symfony-bundle",
     "description": "This Symfony bundle provides a security listener to return a JWT",
-    "keywords": ["symfony2", "symfony3", "symfony4", "bundle", "jwt", "jws", "authentication"],
+    "keywords": ["symfony4", "symfony5", "symfony6", "symfony", "symfony-bundle", "bundle",  "jwt", "jws", "authentication"],
     "homepage": "https://github.com/gfreeau/GfreeauGetJWTBundle",
     "authors": [
         {
@@ -12,13 +12,14 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=5.3.3",
-        "symfony/http-kernel": "^2.7 || ^3.2 || ^4.0",
-        "symfony/dependency-injection": "^2.7 || ^3.2 || ^4.0",
-        "symfony/security-bundle": "^2.7 || ^3.2 || ^4.0"
+        "php": ">=7.2",
+        "ext-json": "*",
+        "symfony/http-kernel": "^4.4 || ^5.4 || ^6.0",
+        "symfony/dependency-injection": "^4.4 || ^5.4 || ^6.0",
+        "symfony/security-bundle": "^4.4 ||^5.4 || ^6.0"
     },
     "suggests": {
-        "lexik/jwt-authentication-bundle": "^1.4.3 || ^2.0.0"
+        "lexik/jwt-authentication-bundle": "^2.0.0"
     },
     "autoload": {
         "psr-0": { "Gfreeau\\Bundle\\GetJWTBundle": "" }
@@ -26,7 +27,7 @@
     "target-dir": "Gfreeau/Bundle/GetJWTBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }
