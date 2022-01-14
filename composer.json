@@ -18,16 +18,37 @@
         "symfony/dependency-injection": "^4.4 || ^5.4 || ^6.0",
         "symfony/security-bundle": "^4.4 ||^5.4 || ^6.0"
     },
+    "require-dev": {
+        "symfony/browser-kit": "^4.4|^5.4|^6.0",
+        "symfony/console": "^4.4|^5.3|^6.0",
+        "symfony/dom-crawler": "^4.4|^5.4|^6.0",
+        "symfony/filesystem": "^4.4|^5.4|^6.0",
+        "symfony/framework-bundle": "^4.4|^5.4|^6.0",
+        "symfony/phpunit-bridge": "^4.4|^5.4|^6.0",
+        "symfony/security-guard": "^4.4|^5.4",
+        "symfony/var-dumper": "^4.4|^5.4|^6.0",
+        "symfony/yaml": "^4.4|^5.4|^6.0",
+        "vimeo/psalm": "^4.18"
+    },
     "suggests": {
         "lexik/jwt-authentication-bundle": "^2.0.0"
     },
     "autoload": {
-        "psr-0": { "Gfreeau\\Bundle\\GetJWTBundle": "" }
+        "psr-4": {
+            "Gfreeau\\Bundle\\GetJWTBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
-    "target-dir": "Gfreeau/Bundle/GetJWTBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "3.0.x-dev"
         }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/simple-phpunit"
+        ]
     }
 }
