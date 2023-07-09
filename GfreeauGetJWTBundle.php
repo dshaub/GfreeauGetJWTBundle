@@ -16,7 +16,12 @@ class GfreeauGetJWTBundle extends Bundle
     {
         /** @var SecurityExtension $extension */
         $extension = $container->getExtension('security');
-
+        
+        // Will will just return here until we fix the other issues in the bundle 
+        // with 5.4 and later compatibility.
+        $extension->addSecurityListenerFactory(new GetJWTFactory());
+        return;
+        
         // Authenticator factory for Symfony 5.4 and later
         if (method_exists($extension, 'addAuthenticatorFactory')) {
             $extension->addAuthenticatorFactory(new GetJWTFactory());
